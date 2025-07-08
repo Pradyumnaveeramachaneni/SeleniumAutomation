@@ -10,8 +10,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.time.Duration;
-
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -24,7 +22,7 @@ public class Login {
     	WebDriverManager.chromedriver().setup();
         // Setup ChromeDriver (using WebDriverManager, this could be automated)
         driver = new ChromeDriver();
-        
+        driver.manage().window().maximize();
         // Open login page
         driver.get("https://itdevenv.co.za/DEPOT/login");
 
@@ -38,6 +36,8 @@ public class Login {
         driver.findElement(By.name("password")).sendKeys(password);
         driver.findElement(By.xpath("//button[@class=\"login-btn\"]")).click();
         Thread.sleep(5000);
+        PurchaseOrder driverp =new PurchaseOrder();
+        driverp.order();
         // Add assertion logic here
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         // Close browser
